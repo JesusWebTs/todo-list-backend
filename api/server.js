@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParse = require("body-parser");
 const cors = require("cors");
 class Server {
   _app;
@@ -15,7 +14,6 @@ class Server {
     return new Promise((resolve, reject) => {
       const http = this._app.listen(
         this._config.PORT,
-        this._config.HOST,
         () => {
           const { port, address } = http.address();
           console.log(`Server ${address} is started on port ${port}`);
