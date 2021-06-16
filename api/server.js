@@ -6,8 +6,8 @@ class Server {
     this._router = router;
     this._config = config;
     this._app = express();
-    this._app.use(express.json());
     this._app.use(cors());
+    this._app.use(express.json());
     this._app.use(router);
   }
   start() {
