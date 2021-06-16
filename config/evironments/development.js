@@ -1,5 +1,5 @@
 module.exports = {
-  PORT: "3000",
+  PORT: "5000",
   HOST: "localhost",
   mongoDB: {
     dialect: "mongodb",
