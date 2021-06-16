@@ -1,9 +1,14 @@
 const express = require("express");
+const bodyParse = require("body-parser");
+const cors = require("cors");
 class Server {
+  _app;
   constructor({ router, config }) {
     this._router = router;
     this._config = config;
     this._app = express();
+    this._app.use(express.json());
+    this._app.use(cors());
     this._app.use(router);
   }
   start() {

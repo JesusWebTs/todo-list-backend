@@ -20,6 +20,8 @@ class BaseController {
     entities = entities.map((entity) => new this._entityDto(entity));
     return res.send({
       payload: entities,
+      status: 200,
+      error: false,
     });
   }
   async get(req, res) {
@@ -28,14 +30,19 @@ class BaseController {
     entity = new this._entityDto(entity);
     return res.json({
       payload: entity,
+      status: 200,
+      error: false,
     });
   }
   async create(req, res) {
     const { body } = req;
+
     const createdEntity = await this._entityService.create(body);
     const entity = new this._entityDto(createdEntity);
     return res.status(201).json({
       payload: entity,
+      status: 201,
+      error: false,
     });
   }
   async update(req, res) {
@@ -45,12 +52,18 @@ class BaseController {
     const entity = new this._entityDto(updatedEntity);
     return res.json({
       payload: entity,
+      status: 200,
+      error: false,
     });
   }
   async delete(req, res) {
-    const { id } = req.params;
+    const { id } = req.params;+
+    console.log(id)
     await this._entityService.delete(id);
-    return res.status(204)
+    return res.json({
+      status: 204,
+      error: false,
+    });
   }
 }
 

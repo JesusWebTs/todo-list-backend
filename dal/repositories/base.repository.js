@@ -7,25 +7,28 @@ class BaseRepository {
     this._db = db;
     this._entity = entity;
   }
-  getAll() {
+  async getAll() {
     console.log(this._entity);
-    return this._db[this._entity].find();
+    return await this._db[this._entity].find();
   }
-  get(id) {
+  async get(id) {
+    console.log(id);
     console.log(this._entity);
-    return this._db[this._entity].findOne({ _id: id });
+    return await this._db[this._entity].findOne({ _id: id });
   }
-  create(entity) {
+  async create(entity) {
     console.log(entity);
-    return this._db[this._entity].create(entity);
+    return await this._db[this._entity].create(entity);
   }
-  update(id, entity) {
+  async update(id, entity) {
     console.log(this._entity);
-    return this._db[this._entity].updateOne({ _id: id }, entity);
+    console.log(entity);
+   
+    return await this._db[this._entity].updateOne({ _id: id }, entity);
   }
-  delete(id) {
+  async delete(id) {
     console.log(this._entity);
-    return this._db[this._entity].deleteOne({ _id: id });
+    return await this._db[this._entity].deleteOne({ _id: id });
   }
 }
 
